@@ -8,8 +8,6 @@ clickNumer = (event) =>{
     else{
         calc.innerHTML+=nr;
     }
-    
-    // console.log(nr);
 }
 
 window.addEventListener('load', (event)=>{
@@ -27,3 +25,49 @@ window.addEventListener('load', (event)=>{
     });
     calc.innerHTML=0;
 })
+
+
+//Keypress functionality
+document.addEventListener('keydown', function(event){
+    if(event.defaultPrevented){
+        return;
+    }
+    if(event.key>='0'&&event.key<='9'){
+        if(calc.innerHTML==0)
+            calc.innerHTML = ''
+        calc.innerHTML+=event.key;
+    }
+    switch(event.key){
+        case "Enter"||"=":
+            calc.innerHTML = eval(calc.innerHTML);
+            break;
+        
+        case "Backspace":
+            if(calc.innerHTML.length!=1)
+                calc.innerHTML = calc.innerHTML.substring(0, calc.innerHTML.length-1)
+            else
+                calc.innerHTML = '0'
+            break;
+        case "(":
+            calc.innerHTML+='(';
+            break;
+        case ")":
+            calc.innerHTML+=')';
+            break;
+        case "*":
+            calc.innerHTML+='*';
+            break;
+        case "/":
+            calc.innerHTML+='/';
+            break;
+        case "+":
+            calc.innerHTML+='+';
+            break;
+        case "-":
+            calc.innerHTML+='-';
+            break;
+        default:
+            return;
+    }
+    event.preventDefault();
+}, true);
