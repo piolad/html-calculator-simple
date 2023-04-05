@@ -30,7 +30,12 @@
     font-weight: 600;
 
     border-color: black;
+    border-radius: 2.5px;
     border-width: 1px;
+
+    padding: 5px;
+    margin: 0.3px;
+    margin-bottom: 1px;
 }
 #buttons-container > button:hover {
     border-color: black;
